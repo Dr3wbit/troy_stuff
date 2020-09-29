@@ -1,7 +1,7 @@
 
 
-    let list1Ticker = 0
-    let list2Ticker = 0
+    let list1Ticker = 1
+    let list2Ticker = 1
     let previousItem1 = 0
     let previousItem2 = 0
 
