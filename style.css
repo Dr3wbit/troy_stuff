@@ -2,5 +2,53 @@
 
 body {
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
 
+.animatedText{
+    position: relative;
+    animation: fade-in-up-and-out 3s;
+}
+
+@keyframes fade-in-up-and-out {
+    0% {
+        transform: translate(0, 200px);
+        opacity: 0;
+    }
+    20% {
+        transform: translate(0,0px);
+		opacity: 1;
+    }
+    80% {
+        transform: translate(0,0px);
+		opacity: 1;
+    }
+    
+	100% {
+        transform: translate(0,-200px);
+        opacity: 0;
+	}
+}
+
+.starterText{
+    position: relative;
+    animation: fade-up-and-out 3.1s;
+}
+
+@keyframes fade-up-and-out {
+    0% {
+        transform: translate(0,0px);
+		opacity: 1;
+    }
+
+    80% {
+        transform: translate(0,0px);
+		opacity: 1;
+    }
+    
+	100% {
+        transform: translate(0,-200px);
+        opacity: 0;
+	}
 }
