@@ -1,60 +1,74 @@
 
 
-    let list1Ticker = 1
-    let list2Ticker = 1
+    let listTicker1 = 0
+    let listTicker2 = 0
     let previousItem1 = 0
     let previousItem2 = 0
 
 
 $(document).ready(()=>{
-    $('.variableText1').append('<div class="starterText">'+list1[0]+'</div>')
-    $('.variableText2').append('<div class="starterText">'+list2[0]+'</div>')
-    setTimeout(() => {
-        $('.variableText1').empty()
-        $('.variableText2').empty()
-    }, 3000);
-   const timer = setInterval(getNewText, 3000, list1, list2)
+    $('.variableText1').append('<div class="starterText1">'+shopperType[shopperType.length-1]+'</div>')
+    $('.variableText2').append('<div class="starterText2">'+websiteList[websiteList.length-1]+'</div>')
+
+    const timer = setInterval(getNewText, 6000, shopperType)
+   const timer2 = setInterval(getNewText, 3000, websiteList)
 });
 
-function getNewText(list1, list2){
+function getNewText(list){
+
+    let listInfo = getListInfo(list)
+   
+    console.log("type: ", listInfo)
+
     
-    if (list1.length <= list1Ticker) {
-        list1Ticker = 0
+
+    if(list === shopperType){
+        let newItem = getNewItem(list, listInfo, 1)
+        $( ".variableText1").find(':first-child').remove()
+        $('.variableText1').append(newItem)
+        previousItem1 = listTicker1
+        listTicker1++
     }
-    if (list2.length <= list2Ticker) {
-        list2Ticker = 0
+    if(list === websiteList){
+        let newItem = getNewItem(list, listInfo, 2)
+        $( ".variableText2").find(':first-child').remove()
+        $('.variableText2').append(newItem)
+        previousItem2 = listTicker2
+        listTicker2++
     }
 
-    let list1Option = $('<div>', {
-        text: list1[list1Ticker],
-        class: "animatedText",
-        id: list1Ticker
+ 
+}
+
+function checkListLength(list){
+    if (list === shopperType && list[listTicker1] === undefined) {
+        listTicker1 = 0
+    }
+    if (list === websiteList && list[listTicker2] === undefined) {
+        listTicker2 = 0
+    }
+}
+
+function getListInfo(list){
+    let listLocation = null
+    if (list === shopperType) {
+        checkListLength(list)
+        listLocation = listTicker1
+    }
+    if (list === websiteList) {
+        checkListLength(list)
+        listLocation = listTicker2
+    }
+    return listLocation
+}
+
+function getNewItem(list, location, animation){
+    console.log(list[location])
+    let item = $('<div>', {
+        text: list[location],
+        class: "animatedText"+animation,
+        id: location
     })
-
-    let list2Option = $('<div>', {
-        text: list2[list2Ticker],
-        class: "animatedText",
-        id: list2Ticker
-    })
-    
-    removePreviousItem()
-
-    $('.variableText1').append(list1Option)
-    $('.variableText2').append(list2Option)
-
-    previousItem1 = list1Ticker
-    previousItem2 = list2Ticker
-    list1Ticker++
-    list2Ticker++
-
-
+    return item
 }
     
-    
-function removePreviousItem() {
-
-$('#' +previousItem1).remove()
-$('#' +previousItem2).remove()
-
-
-}

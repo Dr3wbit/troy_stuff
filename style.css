@@ -6,7 +6,11 @@ body {
     font-size: 18px;
 }
 
-.animatedText{
+.animatedText1{
+    position: relative;
+    animation: fade-in-up-and-out 6s;
+}
+.animatedText2{
     position: relative;
     animation: fade-in-up-and-out 3s;
 }
@@ -31,24 +35,12 @@ body {
 	}
 }
 
-.starterText{
+.starterText1{
     position: relative;
-    animation: fade-up-and-out 3.1s;
+    animation: fade-in-up-and-out 6.1s;
 }
 
-@keyframes fade-up-and-out {
-    0% {
-        transform: translate(0,0px);
-		opacity: 1;
-    }
-
-    80% {
-        transform: translate(0,0px);
-		opacity: 1;
-    }
-    
-	100% {
-        transform: translate(0,-200px);
-        opacity: 0;
-	}
+.starterText2{
+    position: relative;
+    animation: fade-in-up-and-out 3.1s;
 }
